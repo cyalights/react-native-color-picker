@@ -173,10 +173,6 @@ export class HoloColorPicker extends Component {
           </View>
           }
         </View>
-        <View>
-          <Slider value={s} onValueChange={this._onSValueChange} />
-          <Slider value={v} onValueChange={this._onVValueChange} />
-        </View>
       </View>
     )
   }

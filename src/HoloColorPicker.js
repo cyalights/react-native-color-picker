@@ -147,7 +147,6 @@ export class HoloColorPicker extends Component {
                 resizeMode='contain'
                 style={[styles.pickerImage]}
               />
-              <View style={[styles.pickerIndicator, computed.pickerIndicator]} />
             </View>
             {oldColor &&
             <TouchableOpacity

@@ -10,6 +10,8 @@ export class HoloColorPicker extends Component {
     this.state = {
       color: { h: 0, s: 1, v: 1 },
       pickerSize: null,
+      h: null,
+      s: null,
     }
     if (props.oldColor) {
       this.state.color = tinycolor(props.oldColor).toHsv()
@@ -48,12 +50,37 @@ export class HoloColorPicker extends Component {
   }
 
   _onSValueChange(s) {
-    const { h, v } = this._getColor()
+    let { h, v } = this._getColor()
+
+    if (s === 0) {
+      this.setState({ h })
+    }
+    else if (this.state.h != null) {
+      h = this.state.h
+      this.setState({ h: null })
+    }
+
     this._onColorChange({ h, s, v })
   }
 
   _onVValueChange(v) {
-    const { h, s } = this._getColor()
+    let { h, s } = this._getColor()
+
+    if (v === 0) {
+      this.setState({ h })
+
+      if (s !== 0)
+        this.setState({ s })
+    }
+    else if (this.state.h != null) {
+      h = this.state.h
+
+      if (this.state.s != null)
+        s = this.state.s
+
+      this.setState({ h: null, s: null })
+    }
+
     this._onColorChange({ h, s, v })
   }
 
@@ -171,6 +198,10 @@ export class HoloColorPicker extends Component {
             }
           </View>
           }
+        </View>
+        <View style={{ paddingTop: 20 }}>
+          <Slider value={s} onSlidingComplete={this._onSValueChange} />
+          <Slider value={v} onSlidingComplete={this._onVValueChange} />
         </View>
       </View>
     )

@@ -52,7 +52,7 @@ export class HoloColorPicker extends Component {
   _onSValueChange(s) {
     let { h, v } = this._getColor()
 
-    if (s === 0) {
+    if (!s) {
       this.setState({ h })
     }
     else if (this.state.h != null) {
@@ -66,10 +66,10 @@ export class HoloColorPicker extends Component {
   _onVValueChange(v) {
     let { h, s } = this._getColor()
 
-    if (v === 0) {
+    if (!v) {
       this.setState({ h })
 
-      if (s !== 0)
+      if (s)
         this.setState({ s })
     }
     else if (this.state.h != null) {
@@ -200,7 +200,7 @@ export class HoloColorPicker extends Component {
           }
         </View>
         <View style={{ paddingTop: 20 }}>
-          <Slider value={s} onSlidingComplete={this._onSValueChange} />
+          <Slider value={s} onSlidingComplete={this._onSValueChange} disabled={!v} />
           <Slider value={v} onSlidingComplete={this._onVValueChange} />
         </View>
       </View>

@@ -212,14 +212,6 @@ const makeComputedStyles = ({
       width: pickerSize,
       height: pickerSize,
     },
-    pickerIndicator: {
-      top: mx + dx - indicatorSize / 2,
-      left: my + dy - indicatorSize / 2,
-      width: indicatorSize,
-      height: indicatorSize,
-      borderRadius: indicatorSize / 2,
-      backgroundColor: indicatorColor,
-    },
     selectedPreview: {
       width: summarySize / 2,
       height: summarySize,
@@ -259,17 +251,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: null,
     height: null,
-  },
-  pickerIndicator: {
-    position: 'absolute',
-    // Shadow only works on iOS.
-    shadowColor: 'black',
-    shadowOpacity: 0.3,
-    shadowOffset: { width: 3, height: 3 },
-    shadowRadius: 4,
-
-    // This will elevate the view on Android, causing shadow to be drawn.
-    elevation: 5,
   },
   selectedPreview: {
     position: 'absolute',
